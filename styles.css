@@ -40,19 +40,17 @@
 .container {
     --bs-rows: 3;
     height: 550px;
-
 }
 
 .principal-table {
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
     display: flex;
     flex-direction: row;
     text-align: center;
     vertical-align: middle;
-    border-style: solid;
     align-content: space-around;
     justify-content: center;
     flex-wrap: nowrap;
@@ -67,4 +65,54 @@
 
 .col {
     align-self: center;
+}
+
+.cell {
+    border: solid;
+    border-width: thin;
+    height: -webkit-fill-available;
+    font-size: 100px;
+}
+
+#cellIndex1, #cellIndex2, #cellIndex3 {
+    border-top: none;
+}
+
+#cellIndex1, #cellIndex4, #cellIndex7 {
+    border-left: none;
+}
+
+#cellIndex3, #cellIndex6, #cellIndex9 {
+    border-right: none;
+}
+
+#cellIndex7, #cellIndex8, #cellIndex9 {
+    border-bottom: none;
+}
+
+.status-container {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    max-width: 1750px;
+}
+
+.status-container #statusPlayer {
+    color: red;
+    text-align: center;
+}
+
+.status-labels {
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+    flex-wrap: nowrap;
+    justify-content: center;
+    font-size: x-large;
+}
+
+.status-labels #statusTitle {
+    margin-right: 10px;
+    flex-wrap: nowrap;
 }

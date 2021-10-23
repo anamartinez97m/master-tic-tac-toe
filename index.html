@@ -9,7 +9,7 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
             crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
     </head>
     <body>
         <div class="principal-container">
@@ -29,26 +29,33 @@
                 </div>
                 <div class="reset-button">
                     <div>
-                        <button type="reset">Reiniciar partida</button>
+                        <button type="reset" id="resetGameButton">Reiniciar partida</button>
                     </div>
                 </div>
             </div>
             <div class="principal-table">
                 <div class="container">
                     <div class="row row-cols-3" align-items-center>
-                        <div class="col">Celda 1</div>
-                        <div class="col">Celda 2</div>
-                        <div class="col">Celda 3</div>
+                        <div class="col cell" cellIndex="1" id="cellIndex1">Cell 1</div>
+                        <div class="col cell" cellIndex="2" id="cellIndex2">Cell 2</div>
+                        <div class="col cell" cellIndex="3" id="cellIndex3">Cell 3</div>
                     </div>
                     <div class="row row-cols-3" align-items-center>
-                        <div class="col">Celda 4</div>
-                        <div class="col">Celda 5</div>
-                        <div class="col">Celda 6</div>
+                        <div class="col cell" cellIndex="4" id="cellIndex4">Cell 4</div>
+                        <div class="col cell" cellIndex="5" id="cellIndex5">Cell 5</div>
+                        <div class="col cell" cellIndex="6" id="cellIndex6">Cell 6</div>
                     </div>
                     <div class="row row-cols-3" align-items-center>
-                        <div class="col">Celda 7</div>
-                        <div class="col">Celda 8</div>
-                        <div class="col">Celda 9</div>
+                        <div class="col cell" cellIndex="7" id="cellIndex7">Cell 7</div>
+                        <div class="col cell" cellIndex="8" id="cellIndex8">Cell 8</div>
+                        <div class="col cell" cellIndex="9" id="cellIndex9">Cell 9</div>
+                    </div>
+                </div>
+            </div>
+            <div class="status-container">
+                    <div class="col status-labels">
+                        <div id="statusTitle">Jugador actual: </div>
+                        <div id="statusPlayer">X</div>
                     </div>
                 </div>
             </div>
