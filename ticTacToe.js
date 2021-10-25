@@ -15,8 +15,6 @@ export default class TicTacToe {
 
     resetGame() {
         this.initializeGameBoard();
-        // alert('¡Juego reiniciado!');
-        console.log(this.getCells());
     }
 
     getCells() {
@@ -24,11 +22,13 @@ export default class TicTacToe {
     }
 
     canPlayerWin(player) {
+        // TODO: comprobar si las pos están en distinto order
         const positionsThatCanWin = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
 
+        // TODO: check why cant any player win
         const positionsPlayedByPlayer = this.cells
-            .filter(({player: playerIcon}) => {
-                return playerIcon === player.getIcon();
+            .filter((cell) => {
+                return cell.player === player;
             })
             .map(({index}) => {
                 return index;
@@ -60,13 +60,26 @@ export default class TicTacToe {
         return this.isGameTied(playerOne, playerTwo) || this.canPlayerWin(playerOne) || this.canPlayerWin(playerTwo);
     }
 
-    markCell(cellPosition, player) {
+    markCell(cellPosition, player, gameMode) {
         if (!this.isGameTableComplete() && !this.isCellMarked(this.cells[cellPosition])) {
-            this.cells[cellPosition].player = player;
-            this.cells[cellPosition].isCellMarked = true;
+            switch (gameMode) {
+                case 'manual':
+                    this.cells[cellPosition].player = player;
+                    this.cells[cellPosition].isCellMarked = true;
+                    document.getElementById('cellIndex' + cellPosition).innerHTML = player;
+                    break;
+                case 'automatic':
+                    itIsComputersTurn();
+                    break;
+                default:
+                    break;
+            }
 
-            document.getElementById('cellIndex' + cellPosition.toString()).innerHTML = player;
-            return true;
+            if (this.canPlayerWin(player)) {
+                return false;
+            } else {
+                return true;
+            }
         }
 
         return false;

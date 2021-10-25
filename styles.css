@@ -14,7 +14,7 @@
 }
 
 .game-options {
-    margin-top: 3%;
+    margin-top: 1%;
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -74,19 +74,19 @@
     font-size: 100px;
 }
 
-#cellIndex1, #cellIndex2, #cellIndex3 {
+#cellIndex0, #cellIndex1, #cellIndex2 {
     border-top: none;
 }
 
-#cellIndex1, #cellIndex4, #cellIndex7 {
+#cellIndex0, #cellIndex3, #cellIndex6 {
     border-left: none;
 }
 
-#cellIndex3, #cellIndex6, #cellIndex9 {
+#cellIndex2, #cellIndex5, #cellIndex8 {
     border-right: none;
 }
 
-#cellIndex7, #cellIndex8, #cellIndex9 {
+#cellIndex6, #cellIndex7, #cellIndex8 {
     border-bottom: none;
 }
 
