@@ -22,15 +22,23 @@
 }
 
 .input-form {
-    display: flex;
+    display: -webkit-box;
     flex-direction: row;
     margin: 0px auto;
     flex-wrap: nowrap;
 }
 
 .input-form #input-form-option {
-    margin-left: 50px;
+    margin-left: 35px;
     flex-wrap: nowrap;
+}
+
+.level-form {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 70px;
 }
 
 .reset-button {

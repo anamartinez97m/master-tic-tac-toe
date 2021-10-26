@@ -6,6 +6,9 @@ const gameTypeAutomatic = document.getElementById('gameTypeAutomatic');
 const startButton = document.getElementById('startGameButton');
 const resetButton = document.getElementById('resetGameButton');
 const statusPlayer = document.getElementById('statusPlayer');
+const gameLevel = document.getElementById('level-form')
+const gameLevelEasy = document.getElementById('gameLevelEasy');
+const gameLevelDifficult = document.getElementById('gameLevelDifficult');
 
 const gameTable = new TicTacToe();
 const playerOne = new Player('X');
@@ -51,6 +54,11 @@ function resetGameTable() {
 
 window.onload = () => {
     resetButton.disabled = true;
+    gameLevel.hidden = true;
+
+    gameTypeAutomatic.onclick = () => {
+        gameLevel.hidden = false;
+    }
 
     startButton.onclick = () => {
         if(gameTypeManual.checked) {
@@ -60,17 +68,28 @@ window.onload = () => {
             gameMode = 'manual';
 
         } else if(gameTypeAutomatic.checked) {
-            gameTypeManual.disabled = true;
-            gameTypeAutomatic.disabled = true;
-            startButton.disabled = true;
-            gameMode = 'automatic';
+            if(gameLevelEasy.checked) {
+                startButton.disabled = true;
+                gameTypeManual.disabled = true;
+                gameTypeAutomatic.disabled = true;
+                gameMode = 'automaticEasy';
 
+            } else if(gameLevelDifficult.checked) {
+                startButton.disabled = true;
+                gameTypeManual.disabled = true;
+                gameTypeAutomatic.disabled = true;
+                gameMode = 'automaticDifficult';
+
+            } else {
+                alert('Selecciona dificultad de juego');
+            }
         } else {
             alert('Selecciona un modo de juego');
         }
+
         resetButton.disabled = false;
         document.querySelectorAll('.cell').forEach((cell) => cell.addEventListener('click', handleClickEvent));
-    }
+    };
 
     resetButton.onclick = () => {
         resetGameTable();

@@ -41,6 +41,10 @@ export default class TicTacToe {
         });
     }
 
+    randomCell(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
     isCellMarked(cell) {
         return this.cells[cell.index].isCellMarked === true;
     }
@@ -60,20 +64,34 @@ export default class TicTacToe {
         return this.isGameTied(playerOne, playerTwo) || this.canPlayerWin(playerOne) || this.canPlayerWin(playerTwo);
     }
 
+    itIsComputersTurnEasy() {
+        let cells = this.cells.filter(({isCellMarked}) => {
+            return isCellMarked === false;
+        });
+        let random = this.randomCell(0, cells.length);
+
+        return cells[random].index;
+    }
+
     markCell(cellPosition, player, gameMode) {
         if (!this.isGameTableComplete() && !this.isCellMarked(this.cells[cellPosition])) {
+            let positionToMark;
             switch (gameMode) {
                 case 'manual':
-                    this.cells[cellPosition].player = player;
-                    this.cells[cellPosition].isCellMarked = true;
-                    document.getElementById('cellIndex' + cellPosition).innerHTML = player;
+                    positionToMark = cellPosition;
                     break;
-                case 'automatic':
-                    itIsComputersTurn();
+                case 'automaticEasy':
+                    positionToMark = this.itIsComputersTurnEasy();
+                    break;
+                case 'automaticDifficult':
+                    // positionToMark = itIsComputersTurnDifficult(player);
                     break;
                 default:
                     break;
             }
+            this.cells[positionToMark].player = player;
+            this.cells[positionToMark].isCellMarked = true;
+            document.getElementById('cellIndex' + positionToMark).innerHTML = player;
 
             if (this.canPlayerWin(player)) {
                 return false;
